@@ -6,7 +6,6 @@ import java.util.Iterator;
 
 import scorer.ScoreAssigner;
 import concept.Concept;
-import delic.AnnotatedSentence;
 import delic.Document;
 import delic.Sentence;
 
@@ -32,7 +31,7 @@ public class HTMLAnnotator {
 		
 		Document annotated = new Document();
 		annotated.addLine("<html><body>");
-		Iterator<Sentence> sentenceItr = doc.getSentenceIterator();
+		Iterator<Sentence> sentenceItr = doc.getSentencePOSBased();
 		while(sentenceItr.hasNext()) {
 			ArrayList<Concept> conceptsContained = new ArrayList<Concept>();
 			Sentence str = sentenceItr.next();

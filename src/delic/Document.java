@@ -8,9 +8,16 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.Reader;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+import edu.stanford.nlp.ling.HasWord;
+import edu.stanford.nlp.process.DocumentPreprocessor;
 
 public class Document {
 
@@ -93,7 +100,7 @@ public class Document {
 							|| docText.substring(i - 4, i - 1).equals("www") || docText
 							.subSequence(i - 4, i - 1).equals("Inc"))) {
 				sentenceString = sentenceString + docWords[i];
-			} else if (docWords[i] == '.') {
+			} else if (docWords[i] == '.' || docWords[i] == '(') {
 				sawFullstop = true;
 				sentenceString = sentenceString + docWords[i];
 				sentence.setSentenceStr(sentenceString);
@@ -143,6 +150,29 @@ public class Document {
 		return licenseSentences.iterator();
 	}
 
+	/**
+	 * Stanford NLP library based sentence segmentation
+	 * @return Arraylist of sentences
+	 */
+	public Iterator<Sentence> getSentencePOSBased() {
+		Reader reader = new StringReader(this.docText);
+		DocumentPreprocessor dp = new DocumentPreprocessor(reader);
+		ArrayList<Sentence> sentenceList = new ArrayList<Sentence>();
+		Iterator<List<HasWord>> it = dp.iterator();
+		while (it.hasNext()) {
+		   StringBuilder sentenceSb = new StringBuilder();
+		   List<HasWord> sentence = it.next();
+		   for (HasWord token : sentence) {
+		      if(sentenceSb.length() >= 1) {
+		         sentenceSb.append(" ");
+		      }
+		      sentenceSb.append(token);
+		   }
+		   sentenceList.add(new Sentence(sentenceSb.toString()));
+		}
+		return sentenceList.iterator();
+	}
+	
 	public String getDocText() {
 		return docText;
 	}
