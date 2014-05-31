@@ -63,9 +63,7 @@ public class HTMLAnnotator {
 		return annotated;
 	}
 	
-	private boolean between(int num, int a, int b) {
-		return (num > a && num <= b);
-	}
+
 	/**
 	 * Returns an apt color code for given number of matches
 	 * @param numMatches

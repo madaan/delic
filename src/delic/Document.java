@@ -13,7 +13,6 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import edu.stanford.nlp.ling.HasWord;
@@ -152,6 +151,7 @@ public class Document {
 
 	/**
 	 * Stanford NLP library based sentence segmentation
+	 * 
 	 * @return Arraylist of sentences
 	 */
 	public Iterator<Sentence> getSentencePOSBased() {
@@ -160,19 +160,34 @@ public class Document {
 		ArrayList<Sentence> sentenceList = new ArrayList<Sentence>();
 		Iterator<List<HasWord>> it = dp.iterator();
 		while (it.hasNext()) {
-		   StringBuilder sentenceSb = new StringBuilder();
-		   List<HasWord> sentence = it.next();
-		   for (HasWord token : sentence) {
-		      if(sentenceSb.length() >= 1) {
-		         sentenceSb.append(" ");
-		      }
-		      sentenceSb.append(token);
-		   }
-		   sentenceList.add(new Sentence(sentenceSb.toString()));
+			StringBuilder sentenceSb = new StringBuilder();
+			List<HasWord> sentence = it.next();
+			for (HasWord token : sentence) {
+				if (sentenceSb.length() >= 1) {
+					sentenceSb.append(" ");
+				}
+				sentenceSb.append(token);
+			}
+			String sentenceStr = sentenceSb.toString();
+			if (sentenceStr.length() > 20) {
+				int parts = sentenceStr.length() / 20;
+				String pieces[] = new String[parts];
+				int i = 0;
+				while (i < parts) {
+					pieces[i] = sentenceStr.substring(i * 20, i * 20 + 20);
+					i++;
+				}
+				i = 0;
+				while (i < parts) {
+					sentenceList.add(new Sentence(pieces[i++]));
+				}
+			} else {
+				sentenceList.add(new Sentence(sentenceStr));
+			}
 		}
 		return sentenceList.iterator();
 	}
-	
+
 	public String getDocText() {
 		return docText;
 	}
