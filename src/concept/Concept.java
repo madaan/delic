@@ -40,7 +40,7 @@ public class Concept {
 	        	 conceptFileName = new String(conceptFileName);
 	        	 conceptWords = new ArrayList<String>(Arrays.asList(currLine.replaceAll("\\s*,\\s*", ",").split(",")));  
 	        	 conceptName = (new File(conceptFileName)).getName();
-	        	 System.out.println(conceptWords.toString());
+	        	 //System.out.println(conceptWords.toString());
 	         }
 	         else{
 	        	 System.out.println("Error: check the contents of file " + conceptFileName);
