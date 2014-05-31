@@ -16,4 +16,8 @@ public class AnnotatedSentence extends Sentence {
 		this.matchedConcepts = new ArrayList<Concept>(matchedConcepts);
 	}
 
+	public String toString(){
+		return "DataObject [sentenceStr=" + sentenceStr + ", score=" + score + ", matchedConcepts="
+				+ matchedConcepts + "]";
+	}
 }
