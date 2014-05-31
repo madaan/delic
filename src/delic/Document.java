@@ -77,7 +77,16 @@ public class Document {
 				sentences.add(sentence);
 				sentence = new Sentence("");
 				sawFullstop = false;
-			}else if(docWords[i] == '.' || docWords[i] == '!'){
+			}else if(docWords[i] == '.' && (i < docWords.length - 4) && docText.substring(i+1, i+4).equals("com")){
+				sentenceString = sentenceString+docText.substring(i,i+4);
+				i = i + 3;
+			}else if(docWords[i] == '.' && (i > 4) && ( 
+					docText.substring(i-4, i-1).equals("etc") 
+						|| docText.substring(i-4, i-1).equals("www")
+						|| docText.subSequence(i-4,i-1).equals("Inc")
+					)){
+				sentenceString = sentenceString+docWords[i];
+			}else if(docWords[i] == '.'){
 				sawFullstop = true;
 				sentenceString = sentenceString+docWords[i];
 				sentence.setSentenceStr(sentenceString);
@@ -99,9 +108,14 @@ public class Document {
 	}
 	
 	public static void main(String args[]){
-		String docText = "Stupid world.\n This works, even then. I am not sure.\n";
+		String docText = "Stupid world.com is new site at Yahoo! Inc. in  form [username].tumblr.com.\n This works, even then. I am not sure.\n";
 		Document doc = new Document(docText);
-		System.out.println(doc.getSentenceIterator());
+		Iterator<Sentence> iterator = doc.getSentenceIterator();
+		while(iterator.hasNext()) {
+			Sentence sentence = iterator.next();
+			System.out.println(sentence.toString());
+		}
+		//System.out.println(doc.getSentenceIterator());
 	}
 	
 	/**
