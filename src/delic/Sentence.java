@@ -11,7 +11,7 @@ public class Sentence {
 
 	public Sentence(String sentenceStr) {
 		this.sentenceStr = sentenceStr;
-		this.isLastSentence = true;
+		this.isLastSentence = false;
 	}
 
 	public void setSentenceStr(String sentenceStr) {
