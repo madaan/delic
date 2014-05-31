@@ -51,11 +51,11 @@ public class HTMLAnnotator {
 			int score = ScoreAssigner.getNaiveScore(conceptsContained);
 			
 			System.out.println("Score : " + score);
-		if(score < 3) {
-			annotated.addLine(str.getSentenceStr());
+		if(score < 2) {
+			annotated.addLine(str.getSentenceStr() + "(" + numMatches + ")");
 		} else {
 			String colorCode = getColorCode(numMatches);
-			String res = "<font color = " + colorCode + ">" + str.getSentenceStr() + "</font>";
+			String res = "<font color = " + colorCode + ">" + str.getSentenceStr() + "</font>, (" + numMatches + ")";
 			annotated.addLine(res);
 		}
 		}
@@ -78,7 +78,7 @@ public class HTMLAnnotator {
 			"#700000","#780000","#800000","#880000","#900000","#980000","#A00000",
 			"#A80000","#B00000","#B80000","#C00000","#C80000","#D00000","#D80000",
 			"#E00000","#E80000","#F00000","#F80000","#FF0000"};
-		
+
 			return colorCode[numMatches + 20];
 	}
 	
