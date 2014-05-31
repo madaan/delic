@@ -42,9 +42,16 @@ public class ScoreAssigner {
 			multiplicand += multiplicandIncrement;
 		if(conceptExists[MetaConcept.INFORMATION] == 1 && conceptExists[MetaConcept.PARTY] == 1)
 			multiplicand += multiplicandIncrement;
+		if(conceptExists[MetaConcept.LEGAL] == 1 && conceptExists[MetaConcept.PARTY] == 1)
+			multiplicand += multiplicandIncrement;
+		if(conceptExists[MetaConcept.TRANSFER] == 1 && conceptExists[MetaConcept.PARTY] == 1)
+			multiplicand += multiplicandIncrement;
+		if(conceptExists[MetaConcept.USAGE] == 1 && conceptExists[MetaConcept.PARTY] == 1)
+			multiplicand += multiplicandIncrement;
+		if(conceptExists[MetaConcept.OWNERSHIP] == 1 && conceptExists[MetaConcept.PARTY] == 1)
+			multiplicand += multiplicandIncrement;
 		
-		
-		return 0;
+		return multiplicand*conceptList.size();
 	}
 
 }
