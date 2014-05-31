@@ -1,8 +1,8 @@
 package delic;
 
 public class Sentence {
-	String sentenceStr;
-	boolean lastSentence;
+	public String sentenceStr;
+	public boolean lastSentence;
 
 	public Sentence(String sentenceStr) {
 		this.sentenceStr = sentenceStr;
