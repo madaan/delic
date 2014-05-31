@@ -72,14 +72,14 @@ public class HTMLAnnotator {
 	 * @return
 	 */
 	String getColorCode(int numMatches) {
-		if(numMatches == 1) {
-			return "#88cddc";
-		} else if(between(numMatches, 1, 3)) {
-			return "#dcc788";
-		} else if(between(numMatches, 3, 5)) {
-			return "#dc8888";			
-		}
-		return "#ff0000";
+		String colorCode[] = 
+			{"#000000","#080000","#100000","#180000","#200000","#280000","#300000",
+			"#380000","#400000","#480000","#500000","#580000","#600000","#680000",
+			"#700000","#780000","#800000","#880000","#900000","#980000","#A00000",
+			"#A80000","#B00000","#B80000","#C00000","#C80000","#D00000","#D80000",
+			"#E00000","#E80000","#F00000","#F80000","#FF0000"};
+		
+			return colorCode[numMatches + 20];
 	}
 	
 	public static void main(String args[]) throws Exception {
