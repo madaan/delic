@@ -50,11 +50,11 @@ public class HTMLAnnotator {
 			int score = ScoreAssigner.getNaiveScore(conceptsContained);
 			
 			System.out.println("Score : " + score);
-		if(score < 2) {
-			annotated.addLine(str.getSentenceStr() + "(" + score + ")");
+		if(score < 3) {
+			annotated.addLine(str.getSentenceStr() + "(" + score + ", " + conceptsContained + ")");
 		} else {
 			String colorCode = getColorCode(score);
-			String res = "<font color = " + colorCode + ">" + str.getSentenceStr() + "</font>, (" + score + ")";
+			String res = "<font color = " + colorCode + ">" + str.getSentenceStr() + "</font>, (" + score + ", " + conceptsContained + ")";
 			annotated.addLine(res);
 		}
 		}
