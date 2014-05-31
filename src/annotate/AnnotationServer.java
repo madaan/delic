@@ -3,7 +3,6 @@ package annotate;
 import java.io.File;
 import java.util.ArrayList;
 
-import jsonWrapper.JSONConverter;
 import concept.Concept;
 import delic.AnnotatedSentence;
 import delic.Document;
