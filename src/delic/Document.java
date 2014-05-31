@@ -57,7 +57,11 @@ public class Document {
 		this.docText = new String(docText);
 	}
 
-	public ArrayList<Sentence> getSentences(){
+	/**
+	 * Chunk a document into sentences
+	 * @return ArrayList 
+	 */
+	public Iterator<Sentence> getSentenceIterator(){
 		
 		ArrayList<Sentence> sentences = new ArrayList<Sentence>();
 		
@@ -90,22 +94,22 @@ public class Document {
 		if(!sentence.getSentenceStr().equals(""))
 			sentences.add(sentence);
 	
-		return sentences;
+		return sentences.iterator();
 		
 	}
 	
 	public static void main(String args[]){
 		String docText = "Stupid world.\n This works, even then. I am not sure.\n";
 		Document doc = new Document(docText);
-		System.out.println(doc.getSentences());
+		System.out.println(doc.getSentenceIterator());
 	}
 	
 	/**
 	 * This is a stub based on regular expression
-	 * TODO : This should be replaced with NLP based  
+	 * TODO : This should be replaced with NLP based splitter  
 	 * @return
 	 */
-	public Iterator<Sentence> getSentenceIterator(){
+	public Iterator<Sentence> getSentenceIteratorNaive(){
 		ArrayList<String> licenseSplit = new ArrayList<String>(Arrays.asList(docText.split("[\n.?!]")));
 		ArrayList<Sentence>licenseSentences = new ArrayList<Sentence>();
 		
