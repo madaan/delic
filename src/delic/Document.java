@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 public class Document {
 	
@@ -54,4 +57,19 @@ public class Document {
 		this.docText = new String(docText);
 	}
 	
+	/**
+	 * This is a stub based on regular expression
+	 * TODO : This should be replaced with NLP based  
+	 * @return
+	 */
+	public Iterator<Sentence> getSentenceIterator(){
+		ArrayList<String> licenseSplit = new ArrayList<String>(Arrays.asList(docText.split("[\n.?!]")));
+		ArrayList<Sentence>licenseSentences = new ArrayList<Sentence>();
+		
+		for(String s: licenseSplit){
+			Sentence currSentence = new Sentence(s);
+			licenseSentences.add(currSentence);
+		}	
+		return licenseSentences.iterator();
+	}
 }
