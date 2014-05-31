@@ -51,5 +51,5 @@ public class Document {
 	public Document(String docText){
 		this.docText = new String(docText);
 	}
-
+	
 }
