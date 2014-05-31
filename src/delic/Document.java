@@ -1,3 +1,4 @@
+//sg
 package delic;
 
 import java.io.BufferedReader;
@@ -43,6 +44,7 @@ public class Document {
 	            br.close();
 	      }
 	}
+	
 	
 	public Document(){
 		docText = new String("");
