@@ -82,7 +82,7 @@ public class HTMLAnnotator {
 	}
 	
 	public static void main(String args[]) throws Exception {
-		String fileName = "lic";
+		String fileName = "data/licenses/Atlassian.lic";
 		String conceptDirectory = "data/concepts";
 		Document licenseDoc = new Document(new File(fileName));
 		System.out.println("Text : " + licenseDoc.getDocText());
