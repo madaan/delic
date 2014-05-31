@@ -65,6 +65,10 @@ public class Concept {
 	public String getName(){
 		return conceptName;
 	}
+	
+	public String toString(){
+		return conceptName;
+	}
 
 	public boolean isContainedIn(Sentence sentence) {
 		boolean match = false;

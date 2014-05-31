@@ -26,8 +26,10 @@ public class AnnotationServer {
 		
 		Annotator annon = new Annotator(concepts);
 		ArrayList<AnnotatedSentence> annotatedSentences = annon.annotateDoc(licenseDoc);
-		String jsonData = JSONConverter.getJSON(annotatedSentences);
-		System.out.println(jsonData);
+		for(AnnotatedSentence as: annotatedSentences)
+			System.out.println(as);
+		//String jsonData = JSONConverter.getJSON(annotatedSentences);
+		//System.out.println(jsonData);
 		
 	}
 }
