@@ -1,9 +1,60 @@
 package concept;
 
-public class Concept {
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 
+/**
+ * This class represents a concept. The concept has a name and a list of 
+ * relevant words.
+ * @author aman
+ *
+ */
+public class Concept {
+	String conceptName;
+	ArrayList<String> conceptWords;
 	public Concept() {
-		// TODO Auto-generated constructor stub
+		
 	}
+	public Concept(String conceptFileName) throws Exception{
+		InputStream is = null; 
+	    InputStreamReader isr = null;
+	    BufferedReader br = null;
+	    
+	    try{
+	         is = new FileInputStream(conceptFileName);
+	         isr = new InputStreamReader(is);
+	         br = new BufferedReader(isr);   
+	         String currLine = null;
+	   
+	         if ((currLine = br.readLine()) != null) {
+	        	 conceptFileName = new String(conceptFileName);
+	        	 conceptWords = new ArrayList<String>(Arrays.asList(currLine.replaceAll("\\s*,\\s*", ",").split(",")));  
+	        	 System.out.println(conceptWords.toString());
+	         }
+	         else{
+	        	 System.out.println("Error: check the contents of file " + conceptFileName);
+	         }
+	         
+	      }
+	    
+	    catch(Exception e){
+	         e.printStackTrace();
+	    }
+		
+	    finally{	         
+	         if(is != null)
+	            is.close();
+	         if(isr != null)
+	            isr.close();
+	         if(br != null)
+	            br.close();
+	      }
+	}
+
+
 
 }
