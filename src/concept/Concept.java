@@ -1,6 +1,7 @@
 package concept;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -33,6 +34,7 @@ public class Concept {
 	         if ((currLine = br.readLine()) != null) {
 	        	 conceptFileName = new String(conceptFileName);
 	        	 conceptWords = new ArrayList<String>(Arrays.asList(currLine.replaceAll("\\s*,\\s*", ",").split(",")));  
+	        	 conceptName = (new File(conceptFileName)).getName();
 	        	 System.out.println(conceptWords.toString());
 	         }
 	         else{
