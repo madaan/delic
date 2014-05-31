@@ -133,4 +133,7 @@ public class Document {
 		}	
 		return licenseSentences.iterator();
 	}
+	public String getDocText() {
+		return docText;
+	}
 }
