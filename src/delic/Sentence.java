@@ -2,11 +2,11 @@ package delic;
 
 public class Sentence {
 	public String sentenceStr;
-	public boolean lastSentence;
+	public boolean isLastSentence;
 
 	public Sentence(String sentenceStr) {
 		this.sentenceStr = sentenceStr;
-		this.lastSentence = true;
+		this.isLastSentence = true;
 	}
 
 	public void setSentenceStr(String sentenceStr) {
@@ -16,5 +16,17 @@ public class Sentence {
 	public String getSentenceStr() {
 		return sentenceStr;
 	}
+	
+	public void setIsLastSentence(boolean flag){
+		this.isLastSentence = flag;
+	}
+	
+	public boolean getIsLastSentence(){
+		return this.isLastSentence;
+	}
 
+	public String toString(){
+		return sentenceStr+" "+isLastSentence;
+		
+	}
 }

@@ -2,16 +2,18 @@ package delic;
 
 import java.util.ArrayList;
 
+import concept.Concept;
+
 public class AnnotatedSentence extends Sentence {
 
 	int score;
-	ArrayList<String> keywords;
+	ArrayList<Concept> matchedConcepts;
 
-	public AnnotatedSentence(String sentenceStr, ArrayList<String> keywords,
+	public AnnotatedSentence(Sentence sentence, ArrayList<Concept> matchedConcepts,
 			int score) {
-		super(sentenceStr);
+		super(sentence.getSentenceStr());
 		this.score = score;
-		this.keywords = new ArrayList<>(keywords);
+		this.matchedConcepts = new ArrayList<Concept>(matchedConcepts);
 	}
 
 }

@@ -10,10 +10,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
+
 public class Document {
 	
 	String docText;
 
+	public Document(){
+		docText = new String("");
+	}
 	public Document(File fileName) throws Exception{
 		docText = "";
 		//licenseSentences = null;
@@ -48,21 +52,64 @@ public class Document {
 	      }
 	}
 	
-	
-	public Document(){
-		docText = new String("");
-	}
-	
+
 	public Document(String docText){
 		this.docText = new String(docText);
+	}
+
+	/**
+	 * Chunk a document into sentences
+	 * @return ArrayList 
+	 */
+	public Iterator<Sentence> getSentenceIterator(){
+		
+		ArrayList<Sentence> sentences = new ArrayList<Sentence>();
+		
+		char docWords[] = docText.toCharArray();
+		
+		String sentenceString = "";
+		boolean sawFullstop = false;
+		Sentence sentence = new Sentence("");
+		for(int i = 0; i < docWords.length; i++){
+			if(docWords[i] == '\n' && sawFullstop){
+				sentence.setIsLastSentence(true);
+				sentenceString = "";
+				sentences.add(sentence);
+				sentence = new Sentence("");
+				sawFullstop = false;
+			}else if(docWords[i] == '.' || docWords[i] == '!'){
+				sawFullstop = true;
+				sentenceString = sentenceString+docWords[i];
+				sentence.setSentenceStr(sentenceString);
+			}else if(sawFullstop){
+				sentences.add(sentence);
+				sentence = new Sentence("");
+				sentenceString = ""+docWords[i];
+				sawFullstop = false;
+			}else{
+				sentenceString = sentenceString+docWords[i];
+			}
+		}
+		
+		if(!sentence.getSentenceStr().equals(""))
+			sentences.add(sentence);
+	
+		return sentences.iterator();
+		
+	}
+	
+	public static void main(String args[]){
+		String docText = "Stupid world.\n This works, even then. I am not sure.\n";
+		Document doc = new Document(docText);
+		System.out.println(doc.getSentenceIterator());
 	}
 	
 	/**
 	 * This is a stub based on regular expression
-	 * TODO : This should be replaced with NLP based  
+	 * TODO : This should be replaced with NLP based splitter  
 	 * @return
 	 */
-	public Iterator<Sentence> getSentenceIterator(){
+	public Iterator<Sentence> getSentenceIteratorNaive(){
 		ArrayList<String> licenseSplit = new ArrayList<String>(Arrays.asList(docText.split("[\n.?!]")));
 		ArrayList<Sentence>licenseSentences = new ArrayList<Sentence>();
 		

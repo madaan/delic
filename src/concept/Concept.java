@@ -8,15 +8,19 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import delic.Sentence;
+
 /**
- * This class represents a concept. The concept has a name and a list of 
+ * This class represents a concept. The concept has a name and a list of
  * relevant words.
+ * 
  * @author aman
- *
+ * 
  */
 public class Concept {
 	String conceptName;
 	ArrayList<String> conceptWords;
+
 	public Concept() {
 		
 	}
@@ -62,6 +66,15 @@ public class Concept {
 		return conceptName;
 	}
 
-
+	public boolean isContainedIn(Sentence sentence) {
+		boolean match = false;
+		for (String cw : conceptWords) {
+			match = sentence.getSentenceStr().contains(cw);
+			if (match) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
