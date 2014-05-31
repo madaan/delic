@@ -29,9 +29,9 @@ public class Annotator {
 	 * @param licenseDoc
 	 * @return
 	 */
-	ArrayList<AnnotatedSentence> annotateDoc(Document licenseDoc) {
+	public ArrayList<AnnotatedSentence> annotateDoc(Document licenseDoc) {
 		ArrayList<AnnotatedSentence> annotations = new ArrayList<AnnotatedSentence>();
-		Iterator<Sentence> sentenceItr = licenseDoc.getSentenceIterator();
+		Iterator<Sentence> sentenceItr = licenseDoc.getSentencePOSBased();
 		while(sentenceItr.hasNext()) { //for each sentence
 			ArrayList<Concept> matchedConceptList = new ArrayList<Concept>(); //maintain a list of concepts that are matched
 			Sentence currSentence = sentenceItr.next();
