@@ -13,7 +13,6 @@ import delic.Sentence;
 public class HTMLAnnotator {
 
 	ArrayList<Concept> concepts;
-	Document licenseDoc;
 	ScoreAssigner scorer;
 	/**
 	 * Takes a document and a directory of concepts and sets up
@@ -23,23 +22,24 @@ public class HTMLAnnotator {
 	 * @throws Exception 
 	 */
 	public HTMLAnnotator(ArrayList<Concept> concepts) throws Exception {
-		this.concepts = new ArrayList<Concept>();
+		this.concepts = new ArrayList<Concept>(concepts);
 	}
 	public HTMLAnnotator() {
 		
 	}
 	
 	Document annotate(Document doc) {
-		this.licenseDoc = doc;
+		
 		Document annotated = new Document();
 		annotated.addLine("<html><body>");
-		Iterator<Sentence> sentenceItr = licenseDoc.getSentenceIterator();
+		Iterator<Sentence> sentenceItr = doc.getSentenceIterator();
 		while(sentenceItr.hasNext()) {
 			int numMatches = 0;
 			ArrayList<Concept> conceptsContained = new ArrayList<Concept>();
 			Sentence str = sentenceItr.next();
 			for(Concept c : concepts) {
 				if(c.isContainedIn(str)) {
+					
 					conceptsContained.add(c);
 				}
 			}
@@ -47,9 +47,11 @@ public class HTMLAnnotator {
 				annotated.addLine("<br/>");
 			}
 			System.out.println(conceptsContained);
+			//int score = ScoreAssigner.getMatchingScore(conceptsContained);
 			int score = ScoreAssigner.getNaiveScore(conceptsContained);
+			
 			System.out.println("Score : " + score);
-		if(score < 1) {
+		if(score < 3) {
 			annotated.addLine(str.getSentenceStr());
 		} else {
 			String colorCode = getColorCode(numMatches);
