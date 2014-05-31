@@ -73,7 +73,8 @@ public class Concept {
 	public boolean isContainedIn(Sentence sentence) {
 		boolean match = false;
 		for (String cw : conceptWords) {
-			match = sentence.getSentenceStr().toLowerCase().contains(cw);
+			//match = sentence.getSentenceStr().toLowerCase().contains(cw);
+			match = Arrays.asList(sentence.getSentenceStr().toLowerCase().split(" ")).contains(cw);
 			if (match) {
 				return true;
 			}
