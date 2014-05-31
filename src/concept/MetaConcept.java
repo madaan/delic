@@ -13,7 +13,9 @@ public class MetaConcept {
 	public static final Integer SUSPENSION = 4;
 	public static final Integer INFORMATION = 5;
 	public static final Integer OWNERSHIP = 6;
-	public static final Integer USAGE = 7;
+	public static final Integer USAGE = 7;//this must always be the last in this list because numOfConcepts depends on it being the last 
+	
+	public static final Integer numOfConcepts = USAGE + 1;
 	
 	public static Integer getConceptId(String concept){
 		if (concept.equals("finance.cpt"))
