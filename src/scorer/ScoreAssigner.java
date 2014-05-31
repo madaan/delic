@@ -5,8 +5,8 @@ import concept.Concept;
 
 public class ScoreAssigner {
 	
-	public static Integer getScore(ArrayList<Concept> conceptList){
-		return 0;
+	public static Integer getNaiveScore(ArrayList<Concept> conceptList){
+		return conceptList.size();
 	}
 
 }
