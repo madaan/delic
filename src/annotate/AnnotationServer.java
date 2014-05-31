@@ -16,12 +16,14 @@ public class AnnotationServer {
 	public static void main(String args[]) throws Exception {
 		String fileName = "lic";
 		String conceptDirectory = "data/concepts";
-		Document licenseDoc = new Document(fileName);
+		Document licenseDoc = new Document(new File(fileName));
+		System.out.println("Text : " + licenseDoc.getDocText());
 		ArrayList<Concept> concepts = new ArrayList<Concept>();
 		File conceptDir = new File(conceptDirectory);
 		for(File conceptFile : conceptDir.listFiles()) {
 			concepts.add(new Concept(conceptFile.getAbsolutePath()));
 		}
+		
 		Annotator annon = new Annotator(concepts);
 		ArrayList<AnnotatedSentence> annotatedSentences = annon.annotateDoc(licenseDoc);
 		String jsonData = JSONConverter.getJSON(annotatedSentences);
