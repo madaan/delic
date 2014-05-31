@@ -34,7 +34,6 @@ public class HTMLAnnotator {
 		annotated.addLine("<html><body>");
 		Iterator<Sentence> sentenceItr = doc.getSentenceIterator();
 		while(sentenceItr.hasNext()) {
-			int numMatches = 0;
 			ArrayList<Concept> conceptsContained = new ArrayList<Concept>();
 			Sentence str = sentenceItr.next();
 			for(Concept c : concepts) {
@@ -52,10 +51,10 @@ public class HTMLAnnotator {
 			
 			System.out.println("Score : " + score);
 		if(score < 2) {
-			annotated.addLine(str.getSentenceStr() + "(" + numMatches + ")");
+			annotated.addLine(str.getSentenceStr() + "(" + score + ")");
 		} else {
-			String colorCode = getColorCode(numMatches);
-			String res = "<font color = " + colorCode + ">" + str.getSentenceStr() + "</font>, (" + numMatches + ")";
+			String colorCode = getColorCode(score);
+			String res = "<font color = " + colorCode + ">" + str.getSentenceStr() + "</font>, (" + score + ")";
 			annotated.addLine(res);
 		}
 		}
