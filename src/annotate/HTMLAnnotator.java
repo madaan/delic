@@ -31,10 +31,12 @@ public class HTMLAnnotator {
 		
 		Document annotated = new Document();
 		annotated.addLine("<html><body>");
+		//Iterator<Sentence> sentenceItr = doc.getSentenceIterator();
 		Iterator<Sentence> sentenceItr = doc.getSentencePOSBased();
 		while(sentenceItr.hasNext()) {
 			ArrayList<Concept> conceptsContained = new ArrayList<Concept>();
 			Sentence str = sentenceItr.next();
+			
 			for(Concept c : concepts) {
 				if(c.isContainedIn(str)) {
 					
@@ -81,7 +83,7 @@ public class HTMLAnnotator {
 	}
 	
 	public static void main(String args[]) throws Exception {
-		String fileName = "data/licenses/quora.lic";
+		String fileName = "data/licenses/adsense.lic";
 		String conceptDirectory = "data/concepts";
 		Document licenseDoc = new Document(new File(fileName));
 		System.out.println("Text : " + licenseDoc.getDocText());
