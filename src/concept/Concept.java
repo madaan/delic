@@ -20,6 +20,7 @@ public class Concept {
 	public Concept() {
 		
 	}
+	
 	public Concept(String conceptFileName) throws Exception{
 		InputStream is = null; 
 	    InputStreamReader isr = null;
@@ -55,6 +56,10 @@ public class Concept {
 	         if(br != null)
 	            br.close();
 	      }
+	}
+	
+	public String getName(){
+		return conceptName;
 	}
 
 
