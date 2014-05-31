@@ -1,12 +1,12 @@
 package delic;
 
 public class Sentence {
-	String sentenceStr;
-	boolean isLastSentence;
+	public String sentenceStr;
+	public boolean isLastSentence;
 
 	public Sentence(String sentenceStr) {
 		this.sentenceStr = sentenceStr;
-		this.isLastSentence = false;
+		this.isLastSentence = true;
 	}
 
 	public void setSentenceStr(String sentenceStr) {

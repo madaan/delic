@@ -1,3 +1,4 @@
+//sg
 package delic;
 
 import java.io.BufferedReader;
@@ -6,9 +7,9 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-//import java.util.Locale;
+import java.util.Arrays;
+import java.util.Iterator;
 
-// com.ibm.icu.text.BreakIterator;
 
 public class Document {
 	
@@ -51,8 +52,7 @@ public class Document {
 	      }
 	}
 	
-	
-	
+
 	public Document(String docText){
 		this.docText = new String(docText);
 	}
@@ -100,4 +100,19 @@ public class Document {
 		System.out.println(doc.getSentences());
 	}
 	
+	/**
+	 * This is a stub based on regular expression
+	 * TODO : This should be replaced with NLP based  
+	 * @return
+	 */
+	public Iterator<Sentence> getSentenceIterator(){
+		ArrayList<String> licenseSplit = new ArrayList<String>(Arrays.asList(docText.split("[\n.?!]")));
+		ArrayList<Sentence>licenseSentences = new ArrayList<Sentence>();
+		
+		for(String s: licenseSplit){
+			Sentence currSentence = new Sentence(s);
+			licenseSentences.add(currSentence);
+		}	
+		return licenseSentences.iterator();
+	}
 }
