@@ -1,5 +1,9 @@
 package concept;
-
+/**
+ * This class stores information about the concepts involved, basically ids etc.
+ * @author Harshit
+ *
+ */
 public class MetaConcept {
 	
 	public static final Integer FINANCE = 0;

@@ -1,5 +1,10 @@
 package delic;
-
+/**
+ * This class represents a sentence, stores the string content
+ * and a flag which records whether the sentence is the last sentence or not?
+ * @author aman
+ *
+ */
 public class Sentence {
 	public String sentenceStr;
 	public boolean isLastSentence;

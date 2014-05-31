@@ -19,5 +19,5 @@ public class AnnotatedSentence extends Sentence {
 	public String toString(){
 		return "DataObject [sentenceStr=" + sentenceStr + ", score=" + score + ", matchedConcepts="
 				+ matchedConcepts + "]";
-	}
+	}	
 }
