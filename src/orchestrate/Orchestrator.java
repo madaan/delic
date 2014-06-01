@@ -10,10 +10,10 @@ import delic.AnnotatedSentence;
 import delic.Document;
 
 public class Orchestrator {
-	public static String delic(String licenseText) throws Exception {
-		// String fileName = "lic";
+	public static String delic(String pathname) throws Exception {
+		String fileName = "lic";
 		String conceptDirectory = "data/concepts";
-		Document licenseDoc = new Document(licenseText);
+		Document licenseDoc = new Document(new File(fileName));
 		System.out.println("Text : " + licenseDoc.getDocText());
 		ArrayList<Concept> concepts = new ArrayList<Concept>();
 		File conceptDir = new File(conceptDirectory);
@@ -24,5 +24,10 @@ public class Orchestrator {
 		ArrayList<AnnotatedSentence> annotatedSentences = annon.annotateDoc(licenseDoc);
 		String jsonData = JSONConverter.getJSON(annotatedSentences);
 		return jsonData;
+	}
+	
+	public static void main(String args[]) throws Exception {
+		
+		System.out.println(Orchestrator.delic("data/licenses/analytics.lic"));
 	}
 }

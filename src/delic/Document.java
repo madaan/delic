@@ -183,7 +183,7 @@ public class Document {
 				}
 			} else {
 				sentenceList.add(new Sentence(sentenceStr));
-			}
+			}	
 		}
 		return sentenceList.iterator();
 	}

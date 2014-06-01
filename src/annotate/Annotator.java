@@ -31,7 +31,8 @@ public class Annotator {
 	 */
 	public ArrayList<AnnotatedSentence> annotateDoc(Document licenseDoc) {
 		ArrayList<AnnotatedSentence> annotations = new ArrayList<AnnotatedSentence>();
-		Iterator<Sentence> sentenceItr = licenseDoc.getSentencePOSBased();
+		//Iterator<Sentence> sentenceItr = licenseDoc.getSentencePOSBased();
+		Iterator<Sentence> sentenceItr = licenseDoc.getSentenceIterator();
 		while(sentenceItr.hasNext()) { //for each sentence
 			ArrayList<Concept> matchedConceptList = new ArrayList<Concept>(); //maintain a list of concepts that are matched
 			Sentence currSentence = sentenceItr.next();
@@ -41,7 +42,12 @@ public class Annotator {
 				}
 			}
 			int score = ScoreAssigner.getNaiveScore(matchedConceptList);
+			if(score > 0) {
 			annotations.add(new AnnotatedSentence(currSentence, matchedConceptList, score));
+			} else {
+				annotations.add(new AnnotatedSentence(currSentence, matchedConceptList, 0));
+					
+			}
 		}
 		return annotations;
 	}
