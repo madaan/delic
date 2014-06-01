@@ -18,9 +18,10 @@ import delic.Sentence;
 public class Annotator {
 
 	ArrayList<Concept> conceptList;
-	
-	public Annotator(ArrayList<Concept> concepts) {
+	Integer threshold;
+	public Annotator(ArrayList<Concept> concepts, Integer threshold) {
 		this.conceptList = concepts;
+		this.threshold = threshold;
 	}
 	
 	/**
@@ -42,7 +43,7 @@ public class Annotator {
 				}
 			}
 			int score = ScoreAssigner.getNaiveScore(matchedConceptList);
-			if(score > 0) {
+			if(score > threshold) {
 			annotations.add(new AnnotatedSentence(currSentence, matchedConceptList, score));
 			} else {
 				annotations.add(new AnnotatedSentence(currSentence, matchedConceptList, 0));

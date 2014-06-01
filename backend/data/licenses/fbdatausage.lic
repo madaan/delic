@@ -1,0 +1,81 @@
+Information we receive about you
+We receive a number of different types of information about you, including:
+Your information
+Your information is the information that's required when you sign up for the site, as well as the information you choose to share.
+Registration information:
+When you sign up for Facebook, you are required to provide information such as your name, email address, birthday, and gender. In some cases, you may be able to register using other information, like your telephone number.
+Information you choose to share:
+Your information also includes the information you choose to share on Facebook, such as when you post a status update, upload a photo, or comment on a friend's story.
+
+It also includes the information you choose to share when you communicate with us, such as when you contact us using an email address, or when you take an action, such as when you add a friend, like a Page or a website, add a place to your story, use our contact importers, or indicate you are in a relationship.
+Your name, profile pictures, cover photos, gender, networks, username and User ID are treated just like information you choose to make public. Learn more.
+Your birthday allows us to do things like show you age-appropriate content and advertisements.
+Information others share about you
+We receive information about you from your friends and others, such as when they upload your contact information, post a photo of you, tag you in a photo or status update, or at a location, or add you to a group.
+When people use Facebook, they may store and share information about you and others that they have, such as when they upload and manage their invites and contacts.
+Other information we receive about you
+We also receive other types of information about you:
+We receive data about you whenever you use or are running Facebook, such as when you look at another person's timeline, send or receive a message, search for a friend or a Page, click on, view or otherwise interact with things, use a Facebook mobile app, or make purchases through Facebook.
+When you post things like photos or videos on Facebook, we may receive additional related data (or metadata), such as the time, date, and place you took the photo or video.
+We receive data from or about the computer, mobile phone, or other devices you use to install Facebook apps or to access Facebook, including when multiple users log in from the same device. This may include network and communication information, such as your IP address or mobile phone number, and other information about things like your internet service, operating system, location, the type (including identifiers) of the device or browser you use, or the pages you visit. For example, we may get your GPS or other location information so we can tell you if any of your friends are nearby, or we could request device information to improve how our apps work on your device.
+We receive data whenever you visit a game, application, or website that uses Facebook Platform or visit a site with a Facebook feature (such as a social plugin), sometimes through cookies. This may include the date and time you visit the site; the web address, or URL, you're on; technical information about the IP address, browser and the operating system you use; and, if you are logged in to Facebook, your User ID.
+Sometimes we get data from our affiliates or our advertising partners, customers and other third parties that helps us (or them) deliver ads, understand online activity, and generally make Facebook better. For example, an advertiser may tell us information about you (like how you responded to an ad on Facebook or on another site) in order to measure the effectiveness of - and improve the quality of - ads.
+As described in "How we use the information we receive" we also put together data from the information we already have about you, your friends, and others, so we can offer and suggest a variety of services and features. For example, we may make friend suggestions, pick stories for your News Feed, or suggest people to tag in photos. We may put together your current city with GPS and other location information we have about you to, for example, tell you and your friends about people or events nearby, or offer deals to you in which you might be interested. We may also put together data about you to serve you ads or other content that might be more relevant to you.
+When we get your GPS location, we put it together with other location information we have about you (like your current city). But we only keep it until it is no longer useful to provide you services, like keeping your last GPS coordinates to send you relevant notifications.
+We only provide data to our advertising partners or customers after we have removed your name and any other personally identifying information from it, or have combined it with other people's data in a way that it no longer personally identifies you.
+Public information
+When we use the phrase "public information" (which we sometimes refer to as "Everyone information"), we mean the information you choose to make public, as well as information that is always publicly available.
+Information you choose to make public
+Choosing to make your information public is exactly what it sounds like: anyone, including people off Facebook, will be able to see it. Learn more.
+
+Choosing to make your information public also means that this information:
+can be associated with you (i.e., your name, profile pictures, cover photos, timeline, User ID, username, etc.) even off Facebook;
+can show up when someone does a search on Facebook or on a public search engine;
+will be accessible to the Facebook-integrated games, applications, and websites you and your friends use; and
+will be accessible to anyone who uses our APIs such as our Graph API.
+Sometimes you will not be able to select an audience when you post something (like when you write on a Page's wall or comment on a news article that uses our comments plugin). This is because some types of stories are always public stories. As a general rule, you should assume that if you do not see a sharing icon, the information will be publicly available.
+When others share information about you, they can also choose to make it public.
+Information that is always publicly available
+The types of information listed below are always publicly available, and they are treated just like information you decided to make public:
+Name:
+This helps your friends and family find you. If you are uncomfortable sharing your real name, you can always delete your account.
+Profile Pictures and Cover Photos:
+These help your friends and family recognize you. If you are uncomfortable making any of these photos public, you can always delete them. Unless you delete them, when you add a new profile picture or cover photo, the previous photo will remain public in your profile picture or cover photo album.
+Networks:
+This helps you see who you will be sharing information with before you choose "Friends and Networks" as a custom audience. If you are uncomfortable making your network public, you can leave the network .
+Gender:
+This allows us to refer to you properly.
+Username and User ID:
+These allow you to give out a custom link to your timeline or Page, receive email at your Facebook email address, and help make Facebook Platform possible.
+Usernames and User IDs
+Usernames and User IDs are the same thing – a way to identify you on Facebook. A User ID is a string of numbers and a username generally is some variation of your name. With your username, you get a custom link (a Facebook URL, such as www.facebook.com/username) to your timeline that you can give out to people or post on external websites.
+If someone has your Username or User ID, they can use it to access information about you through the facebook.com website. For example, if someone has your Username, they can type facebook.com/Username into their browser and see your public information as well as anything else you've let them see. Similarly, someone with your Username or User ID can access information about you through our APIs, such as our Graph API. Specifically, they can access your public information, along with your age range, language and country.
+If you do not want your information to be accessible to Platform applications, you can turn off all Platform applications from your Privacy Settings. If you turn off Platform you will no longer be able to use any games or other applications until you turn Platform back on. For more information about the information that apps receive when you visit them, see Other websites and applications.
+If you want to see information available about you through our Graph API, just type https://graph.facebook.com/ into your browser.
+Your Facebook email address includes your public username like so: username@facebook.com. People can use your Facebook email address to send you messages and anyone in a message conversation can reply to it.
+How we use the information we receive
+We use the information we receive about you in connection with the services and features we provide to you and other users like your friends, our partners, the advertisers that purchase ads on the site, and the developers that build the games, applications, and websites you use. For example, in addition to helping people see and find things that you do and share, we may use the information we receive about you:
+as part of our efforts to keep Facebook products, services and integrations safe and secure;
+to protect Facebook's or others' rights or property;
+to provide you with location features and services, like telling you and your friends when something is going on nearby;
+to measure or understand the effectiveness of ads you and others see, including to deliver relevant ads to you;
+to make suggestions to you and other users on Facebook, such as: suggesting that your friend use our contact importer because you found friends using it, suggesting that another user add you as a friend because the user imported the same email address as you did, or suggesting that your friend tag you in a picture they have uploaded with you in it; and
+for internal operations, including troubleshooting, data analysis, testing, research and service improvement.
+Granting us permission to use your information not only allows us to provide Facebook as it exists today, but it also allows us to provide you with innovative features and services we develop in the future that use the information we receive about you in new ways.
+While you are allowing us to use the information we receive about you, you always own all of your information. Your trust is important to us, which is why we don't share information we receive about you with others unless we have:
+received your permission;
+given you notice, such as by telling you about it in this policy; or
+removed your name and any other personally identifying information from it.
+Of course, for information others share about you, they control how it is shared.
+We store data for as long as it is necessary to provide products and services to you and others, including those described above. Typically, information associated with your account will be kept until your account is deleted. For certain categories of data, we may also tell you about specific data retention practices.
+We may enable access to public information that has been shared through our services.
+We may allow service providers to access information so they can help us provide services.
+We are able to suggest that your friend tag you in a picture by scanning and comparing your friend's pictures to information we've put together from your profile pictures and the other photos in which you've been tagged. If this feature is enabled for you, you can control whether we suggest that another user tag you in a photo using the “Timeline and Tagging” settings. Learn more at: https://www.facebook.com/help/tag-suggestions
+Deleting and deactivating your account
+If you want to stop using your account, you can either deactivate or delete it.
+Deactivate
+Deactivating your account puts your account on hold. Other users will no longer see your timeline, but we do not delete any of your information. Deactivating an account is the same as you telling us not to delete any information because you might want to reactivate your account at some point in the future. You can deactivate your account on your account settings page.
+Your friends will still see you listed in their list of friends while your account is deactivated.
+Deletion
+When you delete your account, it is permanently deleted from Facebook. It typically takes about one month to delete an account, but some information may remain in backup copies and logs for up to 90 days. You should only delete your account if you are sure you never want to reactivate it. You can delete your account here. Learn more.
+Certain information is needed to provide you with services, so we only delete this information after you delete your account. Some of the things you do on Facebook aren't stored in your account, like posting to a group or sending someone a message (where your friend may still have a message you sent, even after you delete your account). That information remains after you delete your account.
