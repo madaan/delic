@@ -1,0 +1,355 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Delicenser</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic" rel="stylesheet" type="text/css" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.poptrox.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/highcharts/js/highcharts.js"></script>
+		<script src="js/highcharts/js/modules/exporting.src.js"></script>
+		<script>
+		var piedata={},plotdata=[];
+		$(document).ready(function(){
+			$('.sidebar1').on('click','.allspans',function(e){
+				$('.textdata').each(function(index){
+					$(this).addClass('highlight'+$(this).attr('level'));
+				});
+			});
+			$('.sidebar1').on('click','.highlightspan',function(e){
+				//e.preventDefault();
+				var abc = $(this).attr('href');
+				var x = $(this).attr('level');
+				$('.textdata').attr('class', $('.textdata').attr('class').replace(/highlight./, ''));
+				$(''+abc).addClass('highlight'+x);
+				//$('.contentdata').scrollTop($(''+abc).position().top);
+			});
+			$('#submitform').click(function(e){
+				$('.contentdata').html('Loading');
+				
+				$.ajax({
+					type:"POST",
+					url:"http://localhost:8080/Delic-1/rest/delic",
+					data:$('#threshold').val()+"~"+$(licensetext).val(),
+					contentType:"text/plain",
+					async:false,
+					success:function(response){
+						var result = response;
+						var outputText = '',outputLinkListFinal = '';
+						for(x in result)
+						{
+							outputText += "<span class='textdata' level="+result[x]['score']+" id='text"+x+"'>"+result[x]['sentenceStr'].replace(/\n/g,"<br>")+"</span>";
+							if(result[x]['isLastSentence'])
+							{
+								outputText += "<br><br>";
+							}
+							result[x]['index'] = x;
+						}
+						/*for(i=0;i<result.length;i++)
+						{
+							for(j=0;j<result.length-i-1;j++)
+							{
+								if(result[j]['score']<result[j+1]['score'])
+								{
+									var temp = result[j];
+									result[j+1] = result[j];
+									result[j] =temp;
+								}
+							}
+						}*/
+						var count=0,counter=0;
+						for(x in result)
+						{
+							keywords = result[x]['matchedConcepts'];
+							namelist=[];
+							for(y in keywords)
+							{
+								keywordterms = keywords[y]['conceptWords'];
+								kwd = keywordterms.join(',');
+								term = keywords[y]['conceptName'];
+								namelist.push(term.substring(0,term.length-4));
+								if(!piedata[term.substring(0,term.length-4)])
+									piedata[term.substring(0,term.length-4)]=1;
+								else
+									piedata[term.substring(0,term.length-4)]++;
+							}
+							if(result[x]['score']>0 && counter<10){
+							outputlink = namelist.join(',');
+							outputLinkList = '<div class="outerdiv outer'+result[x]['score']+'"><div class="innerdiv inner'+result[x]['score']+'"><div class="contentdiv">'+(parseInt(count)+1)+'</div></div></div>';
+							outputLinkListFinal += '<a class="highlightspan" level="'+result[x]['score']+'" title='+outputlink+' href="#text'+x+'">'+outputLinkList+'</a><vr></vr>';
+							count++;
+							counter++;
+							}
+						}
+						outputLinkList = '<div class="outerdiv outer4"><div class="innerdiv inner4"><div class="contentdiv">All</div></div></div>';
+						outputLinkListFinal += '<a class="allspans">'+outputLinkList+'</a><vr></vr>';
+						outputText = "<br>High<span style='width:280px;display:inline-block'></span>Low</center><br>" + outputText;
+						for(i=1;i<=8;i++)
+						{
+							outputText = "<span style='width:40px;height:30px;display:inline-block' class='outer"+i+"'> </span>" + outputText;
+						}
+						$('.contentdata').html("<center>Importance Level<br>"+outputText);
+						$('.sidebar1').html('<center>'+outputLinkListFinal.substring(0,outputLinkListFinal.length-9)+'</center>');
+						for(x in piedata)
+						{
+							plotdata.push([x,piedata[x]]);
+						}
+						showchart();
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
+			
+			
+			});
+		});
+		</script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+<style type="text/css">
+.outerdiv{
+	height:40px;
+	width:40px;
+	border-radius:25px;
+}
+.innerdiv{
+	position:relative;
+	top:5px;
+	height:30px;
+	width:30px;
+	border-radius:25px;
+}
+.innerdiv:hover{
+	background-color:#AAAAAA;
+}
+.contentdiv{
+	text-align:center;
+	color:#000000;
+	font-size:12px;
+}
+vr {
+	position:relative;
+	display: block;
+	background-color: #777777;
+	width: 2px;
+	margin: 0px auto;
+	height: 10px;
+	vertical-align: top;
+}
+
+.outer8{
+	background-color:#092019;
+}
+.outer7{
+	background-color:#123f31;
+}
+.outer6{
+	background-color:#1c5f4a;
+}
+.outer5{
+	background-color:#2e9e7b;
+}
+.outer4{
+	background-color:#35b88f;
+}
+.outer3{
+	background-color:#61d1ae;
+}
+.outer2{
+	background-color:#81dabe;
+}
+.outer1{
+	background-color:#a0e3ce;
+}
+
+.inner8{
+	background-color:#092019;
+}
+.inner7{
+	background-color:#123f31;
+}
+.inner6{
+	background-color:#1c5f4a;
+}
+.inner5{
+	background-color:#2e9e7b;
+}
+.inner4{
+	background-color:#35b88f;
+}
+.inner3{
+	background-color:#61d1ae;
+}
+.inner2{
+	background-color:#81dabe;
+}
+.inner1{
+	background-color:#a0e3ce;
+}
+
+.highlight8{
+	background-color:#092019;
+	color:#FFFFFF;
+}
+.highlight7{
+	background-color:#123f31;
+	color:#FFFFFF;
+}
+.highlight6{
+	background-color:#1c5f4a;
+	color:#FFFFFF;
+}
+.highlight5{
+	background-color:#2e9e7b;
+}
+.highlight4{
+	background-color:#35b88f;
+}
+.highlight3{
+	background-color:#61d1ae;
+}
+.highlight2{
+	background-color:#81dabe;
+}
+.highlight1{
+	background-color:#a0e3ce;
+}
+
+</style>
+	</head>
+	<body>
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<h1>Delicenser</h1>
+					<p>By Team Delic</p>
+				</header>
+				<footer>
+					<a href="#banner" class="button style2 scrolly scrolly-centered">Begin</a>
+				</footer>
+			</section>
+		
+		<!-- Banner -->
+			<section id="banner">
+					<h4>Enter the license agreement details</h4>
+				<p>
+						<span>
+						Enter a threshold
+						</span>
+						<br>
+						<select id="threshold">
+						<option value="0">Low</option>
+						<option value="1" selected="selected">Medium</option>
+						<option value="2">High</option>
+						</select>
+						<br>
+						<textarea id="licensetext" rows="10" cols="80"></textarea>
+						<br>
+						
+				</p>
+				<footer>
+					<a id="submitform" href="#first" class="button style2 scrolly">Simplify Me!</a>
+				</footer>
+			</section>
+		
+		<!-- Feature 1 -->
+			<section id="first" class="container box style1 right" style="padding:5px">
+				<div class="sidebar1" style="float:left;padding-top:65px">
+				</div>
+				<div id="content">
+					<div class="contentdata" style="height:600px;overflow:scroll;padding-left:10px">
+					</div>
+				</div>
+			</section>
+<section id="second" class="container box style2 right">
+<div id="container">
+</div>
+<script>
+function showchart()
+{
+$('#container').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Category share of issues in the license document'
+        },
+        tooltip: {
+    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Category share',
+            data: plotdata
+        }]
+    });
+}
+</script>
+</section>
+<section id="third" class="container box style3 right">
+<h4>About Delic</h4>
+<p>
+Ever tried reading those irritatingly long software licenses and terms of services? Too crazy an idea, right? Based on the summarization techniques of NLP we have built the web application delic (delicenser) which can possibly ignore all the irrelevant content in such licenses and solely focus on the issues of importance. 
+</p>
+<p>
+Examples: 
+<ol style="list-style-type:decimal">
+<li>delic tends to ignore text such as  "Software means blah blah blah" or "You agree to pay all taxes blah blah".</li>
+<li>delic highlights text such as "We can also share your email address with . . ." or "We can use your content and information for marketing or promotional purposes . . ."</li>
+</ol>
+<p>
+<h4>How to use delic?</h4>
+<ul style="list-style-type:square">
+<li>Very simple! Go to the delic webpage and now you can copy paste the text of the license, provide it as text file or pdf file, and then submit it for delicensification. </li>
+<li>
+What you get is a navigation panel made of color-coded circles on the left, on which you can click and thus make the corresponding text highlighted and also automatically scroll down to it.</li>
+<li>
+You also have the optional last circle which you can click to highlight all the important points and then manually scroll through the content.
+</li>
+<li>
+You will also see a piechart of various categories of issues that the license discusses. 
+</li>
+</section>	
+<section id="footer">
+			<ul class="icons">
+				<li><a href="#" class="fa fa-twitter solo"><span>Twitter</span></a></li>
+				<li><a href="#" class="fa fa-facebook solo"><span>Facebook</span></a></li>
+				<li><a href="#" class="fa fa-google-plus solo"><span>Google+</span></a></li>
+				<li><a href="#" class="fa fa-pinterest solo"><span>Pinterest</span></a></li>
+				<li><a href="#" class="fa fa-dribbble solo"><span>Dribbble</span></a></li>
+				<li><a href="#" class="fa fa-linkedin solo"><span>LinkedIn</span></a></li>
+			</ul>
+			<div class="copyright">
+				<ul class="menu">
+					<li>&copy; Untitled. All rights reserved.</li>
+					<li>Design: <a href="http://html5up.net/">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</section>
+
+	</body>
+</html>
