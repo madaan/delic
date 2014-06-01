@@ -85,9 +85,9 @@ public class Concept {
 			if (match) {
 				int beginBold = lowerString.indexOf(cw, 0);
 				lowerString = lowerString.substring(0, beginBold)
-						+ "\\<b\\>"
+						+ "<b>"
 						+ cw
-						+ "\\</b\\>"
+						+ "</b>"
 						+ lowerString.substring(beginBold + cw.length(),
 								lowerString.length());
 			}

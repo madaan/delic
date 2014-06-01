@@ -16,6 +16,7 @@ public class Orchestrator {
 		Document licenseDoc = new Document(new File(fileName));
 		System.out.println("Text : " + licenseDoc.getDocText());
 		ArrayList<Concept> concepts = new ArrayList<Concept>();
+		
 		File conceptDir = new File(conceptDirectory);
 		for(File conceptFile : conceptDir.listFiles()) {
 			concepts.add(new Concept(conceptFile.getAbsolutePath()));
@@ -23,7 +24,10 @@ public class Orchestrator {
 		Annotator annon = new Annotator(concepts);
 		ArrayList<AnnotatedSentence> annotatedSentences = annon.annotateDoc(licenseDoc);
 		String jsonData = JSONConverter.getJSON(annotatedSentences);
-		return jsonData;
+		byte[] b = jsonData.getBytes("UTF-8");
+		String str =  new String(b, "UTF-8");
+		System.out.println(str);
+		return str;
 	}
 	
 	public static void main(String args[]) throws Exception {
